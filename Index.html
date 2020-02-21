@@ -7,14 +7,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="author" content="Mega Travel"/>
         <link rel="stylesheet" href="Style1.css">
+        
+        <!--Load React API--> 
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <!--Load React DOM--> 
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <!--Load Babel Compiler-->  
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     </head>
     
     <body>
-
-        <header>
+        
+        <header>       
+            <div id="solarImage"></div> 
             <img src="mega travel logo.png" alt="Mega Logo" width="400px" height="200px">
+            <div id="time"></div> 
+            <div id="welcome"></div> 
         </header>
-
+ 
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
+        <!-- Load our React component.
+        <script src="like_button.js"></script> -->
+   
         <div class ="subHead"> 
 
         <nav>
@@ -42,6 +59,7 @@
                         <div class="col-1-4" id="destination01">
                             <img src="maldives.png" alt="Maldives image" width="300px" height="200px">
                             <h2>Maldives Resort</h2>
+                            <br>
                             <p class="orgprice">$1800.99</p>
                             <p class="discprice">Price you pay <b>$999.99</b></p>
                             <p class="savings">Your saving $801</p>
@@ -51,6 +69,7 @@
                         <div class="col-1-4" id="destination02">
                             <img src="mexico.png" alt="Mexico image" width="300px" height="200px">
                             <h2>Mexico Resort (All Inclusive!)</h2>
+                            
                             <p class="orgprice">$2999.99</p>
                             <p class="discprice">Price you pay <b>$2199.99</b></p>
                             <p class="savings">Your saving $800</p>
@@ -60,6 +79,7 @@
                         <div class="col-1-4" id="destination03">
                             <img src="newzealand.png" alt="New Zealand image" width="300px" height="200px">
                             <h2>New Zealand Trek</h2>
+                            <br>
                             <p class="orgprice">$2499.99</p>
                             <p class="discprice">Price you pay <b>$2100.00</b></p>
                             <p class="savings">Your saving $399</p>
@@ -70,6 +90,7 @@
 
                             <img src="Venice.png" alt="Veince image" width="300px" height="200px">
                             <h2>Venice Italy</h2>
+                            <br>
                             <p class="orgprice">$4100.00</p>
                             <p class="discprice">Price you pay <b>$3699.00</b></p>
                             <p class="savings">Your saving $400</p>
@@ -88,4 +109,61 @@
         </footer>
 
     </body>
+
+    <!--Begin ReactJS -->
+
+        <script type="text/babel">
+            function tick() {
+                const element = (
+                    <div>{new Date().toLocaleTimeString()}</div>
+                );
+            ReactDOM.render(element, document.getElementById('time'));
+            }
+        setInterval(tick, 1000);
+        </script>
+
+        <script type="text/babel">
+            function welcome() {
+                var today = new Date()
+                var hour = today.getHours()
+                var element;
+
+                if (hour < 12)
+                {
+                    element = <div>Good morning!</div>
+                }
+                else if (hour < 18)
+                {
+                    element = <div>Good afternoon!</div>
+                }
+                else
+                {
+                    element = <div>Good evening!</div>
+                }
+            ReactDOM.render(element, document.getElementById('welcome'));
+            }
+
+        setInterval(welcome, 1000);
+        </script>
+
+        <script type="text/babel">
+            function solarImage() {
+                var today = new Date()
+                var hour = today.getHours()
+                var element;
+
+                if (6 < hour && hour < 18)
+                {
+                    element = <div><img src="sun.png"></img></div>
+                }
+                else
+                {
+                    element = <div><img src="moon.png"></img></div>
+                }
+            ReactDOM.render(element, document.getElementById('solarImage'));
+            }
+
+        setInterval(solarImage, 1000);
+        </script>
+
 </html>
