@@ -7,12 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="author" content="Mega Travel"/>
         <link rel="stylesheet" href="Style1.css">
+        <script src="https://fb.me/react-0.14.3.min.js"></script>
+        <script src="https://fb.me/react-dom-0.14.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
     </head>
     
     <body>
 
         <header>
-            <img src="mega travel logo.png" alt="Mega Logo" width="400px" height="200px">
+            <img src="mega travel logo.png" alt="Mega Logo" width="400px" height="200px">    
         </header>
 
         <div class ="subHead"> 
@@ -36,7 +39,33 @@
 
                 </div>
             </div>
+
         </article>
+            </React>    
+            <div class="row">
+                <div class="column">
+                    <div class="col-1-4" id="destination01">
+                        <div id="react-container1"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="col-1-4" id="destination02">
+                        <div id="react-container2"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="col-1-4" id="destination03">
+                        <div id="react-container3"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="col-1-4" id="destination04">
+                        <div id="react-container4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </React>
         
         <footer>
             <p>Copyright Protected. All rights reserved<br>
@@ -45,5 +74,198 @@
                mega@travels.com
             </p>
         </footer>
+
+        <!-- Activities selector -->
+        <!-- Maldives -->
+
+        <script type="text/babel">
+            var Checkbox = React.createClass({
+              getInitialState: function()
+              {
+                return {checked: false}
+              },
+              handleCheck: function()
+              {
+                this.setState({checked: !this.state.checked});
+              },
+              render: function()
+              {
+                var msg;
+
+                if (this.state.checked)
+                {
+                    return (
+                        <div>
+                            <p>Maldives Resort</p>
+                            <p>Meseums<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            <p>Sailing<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            <p>Beach<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            <p>Hiking<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            <p>Boating<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                        </div>    
+                    );
+
+                } else
+                {
+                  msg = "Un-checked";
+                }
+                return (
+
+                  <div>
+                    <p>Maldives Resort</p>
+                    <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                  </div>
+                );
+              }
+            });
+            
+            React.render(<Checkbox />,
+              document.getElementById('react-container1')
+            );
+            </script>
+
+        <!-- Mexico -->
+
+        <script type="text/babel">
+            var Checkbox = React.createClass({
+            getInitialState: function()
+            {
+                return {checked: false}
+            },
+            handleCheck: function()
+            {
+                this.setState({checked: !this.state.checked});
+            },
+            render: function()
+            {
+                var msg;
+
+                if (this.state.checked)
+                {
+                    return (
+                        <div>
+                            <p>Cancun</p>
+                            <p>Parks and Recreation<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            <p>Beaches<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            <p>Boating<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            <p>Snorkeling<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                        </div>    
+                    );
+
+                } else
+                {
+                msg = "Un-checked";
+                }
+                return (
+
+                <div>
+                    <p>Cancun</p>
+                    <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                </div>
+                );
+            }
+            });
+            
+            React.render(<Checkbox />,
+            document.getElementById('react-container2')
+            );
+            </script>
+
+           <!-- New Zealand -->
+
+            <script type="text/babel">
+                var Checkbox = React.createClass({
+                getInitialState: function()
+                {
+                    return {checked: false}
+                },
+                handleCheck: function()
+                {
+                    this.setState({checked: !this.state.checked});
+                },
+                render: function()
+                {
+                    var msg;
+
+                    if (this.state.checked)
+                    {
+                        return (
+                            <div>
+                                <p>New Zealand</p>
+                                <p>City Tours<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                                <p>Sports<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                                <p>Cycling<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                                <p>Museums<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                                <p>Boating<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            </div>    
+                        );
+
+                    } else
+                    {
+                    msg = "Un-checked";
+                    }
+                    return (
+
+                    <div>
+                        <p>New Zealand</p>
+                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                    </div>
+                    );
+                }
+                });
+                
+                React.render(<Checkbox />,
+                document.getElementById('react-container3')
+                );
+            </script>
+
+            <!-- Italy -->
+
+            <script type="text/babel">
+                var Checkbox = React.createClass({
+                getInitialState: function()
+                {
+                    return {checked: false}
+                },
+                handleCheck: function()
+                {
+                    this.setState({checked: !this.state.checked});
+                },
+                render: function()
+                {
+                    var msg;
+
+                    if (this.state.checked)
+                    {
+                        return (
+                            <div>
+                                <p>Venice, Italy</p>
+                                <p>Museums<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                                <p>Theatre<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                                <p>Parks and Recreation<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                                <p>City Tours<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
+                            </div>    
+                        );
+
+                    } else
+                    {
+                    msg = "Un-checked";
+                    }
+                    return (
+
+                    <div>
+                        <p>Venice, Italy</p>
+                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                    </div>
+                    );
+                }
+                });
+                
+                React.render(<Checkbox />,
+                document.getElementById('react-container4')
+                );
+            </script>
+
+
     </body>
 </html>
