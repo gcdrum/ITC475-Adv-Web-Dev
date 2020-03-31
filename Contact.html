@@ -1,271 +1,315 @@
 <!DOCTYPE html>
+
 <html>
 
     <head>
         <meta charset="utf-8" />
         <meta name="keywords" content="Travels, Tours, Mega Travel , Maldives, Mexico, New Zealand, Italy"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta name="author" content="Mega Travel"/>
         <link rel="stylesheet" href="Style1.css">
-        <script src="https://fb.me/react-0.14.3.min.js"></script>
-        <script src="https://fb.me/react-dom-0.14.3.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
     </head>
+
+    <!-- Load React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     
     <body>
 
         <header>
-            <img src="mega travel logo.png" alt="Mega Logo" width="400px" height="200px">    
+            <img src="mega travel logo.png" alt="Mega Logo" width="400px" height="200px">
         </header>
 
         <div class ="subHead"> 
 
-            <nav>
-                <a href="Index.html">Home</a>
-                <a href="About.html">About Us</a>
-                <a href="Contact.html">Contact Agent</a>            
-            </nav>
+        <nav>
+            <a href="Index.html">Home</a>
+            <a href="About.html">About Us</a>
+            <a href="Contact.html">Contact Agent</a>            
+        </nav>
         
         <article>
+
             <div class="row">
+                
+                    <h2>
+                        Contact an Agent
+                    </h2>
 
-                <div class="col-1-2" id="decription">
-
-                    <h2>Contact an Agent</h2>
-
-                    <p>We would love to know more about your travel plans.  Please fill out this Contact
+                    <p>
+                       We would love to know more about your travel plans.  Please fill out this Contact
                        to get in touch with a travel agent.
                     </p>
 
-                </div>
             </div>
 
+            <!--Call to React component-->
+            <div id='reactForm'></div>
+            
         </article>
-            </React>    
-            <div class="row">
-                <div class="column">
-                    <div class="col-1-4" id="destination01">
-                        <div id="react-container1"></div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="col-1-4" id="destination02">
-                        <div id="react-container2"></div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="col-1-4" id="destination03">
-                        <div id="react-container3"></div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="col-1-4" id="destination04">
-                        <div id="react-container4"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </React>
         
         <footer>
-            <p>Copyright Protected. All rights reserved<br>
+            <p>Copyright Protected. All rights reserved.<br>
                <br>
                MEGA TRAVELS<br>
                mega@travels.com
             </p>
         </footer>
+    </body>
 
-        <!-- Activities selector -->
-        <!-- Maldives -->
 
-        <script type="text/babel">
-            var Checkbox = React.createClass({
-              getInitialState: function()
-              {
-                return {checked: false}
-              },
-              handleCheck: function()
-              {
-                this.setState({checked: !this.state.checked});
-              },
-              render: function()
-              {
-                var msg;
+    <!--JS React Form with activities selector-->
+    <script type="text/babel">
 
-                if (this.state.checked)
+        class MyForm extends React.Component
+        {
+            constructor(props) 
+            {
+                super(props);
+                this.state = 
                 {
-                    return (
-                        <div>
-                            <p>Maldives Resort</p>
-                            <p>Meseums<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            <p>Sailing<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            <p>Beach<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            <p>Hiking<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            <p>Boating<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                        </div>    
-                    );
+                    isMaldivesChecked: false,
+                    isMaldivesMuseumsChecked: false,
+                    isMaldivesSailingChecked: false,
+                    isMaldivesBeachChecked: false,
+                    isMaldivesHikingChecked: false,
+                    isMaldivesBoatingChecked: false,
+                    isMexicoChecked: false,
+                    isMexicoParksChecked: false,
+                    isMexicoBeachesChecked: false,
+                    isMexicoBoatingChecked: false,
+                    isMexicoSnorkelingChecked: false,
+                    isNewZealandChecked: false,
+                    isNewZealandCityToursChecked: false,
+                    isNewZealandSportsChecked: false,
+                    isNewZealandCyclingChecked: false,
+                    isNewZealandMuseumsChecked: false,
+                    isNewZealandBoatingChecked: false,
+                    isVeniceItalyChecked: false,
+                    isVeniceItalyMuseumsChecked: false,
+                    isVeniceItalyTheatreChecked: false,
+                    isVeniceItalyParksChecked: false,
+                    isVeniceItalyCityToursChecked: false,
+                    firstName: '',
+                    lastName: '',
+                    emailAddress: '',
+                    phoneNumber: '',
+                    numAdults: '',
+                    numChildren: '',
+                    date: ''
+                };
+            }
 
-                } else
-                {
-                  msg = "Un-checked";
-                }
-                return (
+            mySubmitHandler = (event) =>
+            {
+                //event.preventDefault();
 
-                  <div>
-                    <p>Maldives Resort</p>
-                    <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
-                  </div>
+                alert("You are submitting: " + "\n"
+                + "Maldive: " + this.state.isMaldivesChecked + ", Maldive Museums: " + this.state.isMaldivesMuseumsChecked + "\n"
+                + "Maldive Sailing: " + this.state.isMaldivesSailingChecked + ", Maldive Beach: " + this.state.isMaldivesBeachChecked + "\n"
+                + "Maldive Hiking: " + this.state.isMaldivesHikingChecked + ", Maldive Boating: " + this.state.isMaldivesBoatingChecked + "\n"
+                + "Mexico: " + this.state.isMexicoChecked + ", Mexico Parks and Rec: " + this.state.isMexicoParksChecked + "\n"
+                + "Mexico Beaches: " + this.state.isMexicoBeachesChecked + ", Mexico Boating: " + this.state.isMexicoBoatingChecked + "\n"
+                + "Mexico Snorkeling: " + this.state.isMexicoSnorkelingChecked + ", NewZealand: " + this.state.isNewZealandChecked + "\n"
+                + "NewZealand CityTours: " + this.state.isNewZealandCityToursChecked + ", NewZealand Sports: " + this.state.isNewZealandSportsChecked + "\n"
+                + "NewZealand Cycling: " + this.state.isNewZealandCyclingChecked + ", NewZealand Museums: " + this.state.isNewZealandMuseumsChecked + "\n"
+                + "NewZealand Boating: " + this.state.isNewZealandBoatingChecked + ", VeniceItaly: " + this.state.isVeniceItalyChecked + "\n"
+                + "VeniceItaly Museums: " + this.state.isVeniceItalyMuseumsChecked + ", VeniceItaly Theatre: " + this.state.isVeniceItalyTheatreChecked + "\n"
+                + "VeniceItaly Parks and Rec: " + this.state.isVeniceItalyParksChecked + ", VeniceItaly City Tours: " + this.state.isVeniceItalyCityToursChecked + "\n"
+                + "First Name: " +  this.state.firstName + "\n" 
+                + "Last Name: " + this.state.lastName + "\n"
+                + "Email Address: " + this.state.emailAddress + "\n"
+                + "Phone Number: " + this.state.phoneNumber + "\n"
+                + "Number of Adults: " + this.state.numAdults + "\n"
+                + "Number of Childeren: " + this.state.numChildren + "\n"
+                + "Date: " + this.state.date
                 );
-              }
-            });
+               
+            }
+
+            //Maldives
+            myMaldivesCheckboxChanged = (event) => 
+            { 
+                this.setState({isMaldivesChecked: !this.state.isMaldivesChecked}); 
             
-            React.render(<Checkbox />,
-              document.getElementById('react-container1')
-            );
-            </script>
+                if (this.state.isMaldivesChecked)
+				{
+					document.getElementById("maldivesActivitiesDiv").style.display = "none";
+				}
+				else
+				{
+					document.getElementById ("maldivesActivitiesDiv").style.display = "block";
+				}
+			}
 
-        <!-- Mexico -->
+            myMaldivesMuseumsCheckboxChanged = (event) => { this.setState({isMaldivesMuseumsChecked: !this.state.isMaldivesMuseumsChecked}); }
+            myMaldivesSailingCheckboxChanged = (event) => { this.setState({isMaldivesSailingChecked: !this.state.isMaldivesSailingChecked}); }
+            myMaldivesBeachCheckboxChanged = (event) => { this.setState({isMaldivesBeachChecked: !this.state.isMaldivesBeachChecked}); }
+            myMaldivesHikingCheckboxChanged = (event) => { this.setState({isMaldivesHikingChecked: !this.state.isMaldivesHikingChecked}); }
+            myMaldivesBoatingCheckboxChanged = (event) => { this.setState({isMaldivesBoatingChecked: !this.state.isMaldivesBoatingChecked}); }
 
-        <script type="text/babel">
-            var Checkbox = React.createClass({
-            getInitialState: function()
+
+            //Mexico
+            myMexicoCheckboxChanged = (event) => 
+            { 
+                this.setState({isMexicoChecked: !this.state.isMexicoChecked}); 
+
+                if (this.state.isMexicoChecked)
+				{
+					document.getElementById("mexicoActivitiesDiv").style.display = "none";
+				}
+				else
+				{
+					document.getElementById ("mexicoActivitiesDiv").style.display = "block";
+				}
+            }
+
+            myMexicoParksCheckboxChanged = (event) => { this.setState({isMexicoParksChecked: !this.state.isMexicoParksChecked}); }
+            myMexicoBeachesCheckboxChanged = (event) => { this.setState({isMexicoBeachesChecked: !this.state.isMexicoBeachesChecked}); }
+            myMexicoBoatingCheckboxChanged = (event) => { this.setState({isMexicoBoatingChecked: !this.state.isMexicoBoatingChecked}); }
+            myMexicoSnorkelingCheckboxChanged = (event) => { this.setState({isMexicoSnorkelingChecked: !this.state.isMexicoSnorkelingChecked}); }
+
+
+            //New Zealand
+            myNewZealandCheckboxChanged = (event) => 
+            { 
+                this.setState({isNewZealandChecked: !this.state.isNewZealandChecked}); 
+
+                if (this.state.isNewZealandChecked)
+				{
+					document.getElementById("newZealandActivitiesDiv").style.display = "none";
+				}
+				else
+				{
+					document.getElementById ("newZealandActivitiesDiv").style.display = "block";
+				}
+            }
+
+            myNewZealandCityToursCheckboxChanged = (event) => { this.setState({isNewZealandCityToursChecked: !this.state.isNewZealandCityToursChecked}); }
+            myNewZealandSportsCheckboxChanged = (event) => { this.setState({isNewZealandSportsChecked: !this.state.isNewZealandSportsChecked}); }
+            myNewZealandCyclingCheckboxChanged = (event) => { this.setState({isNewZealandCyclingChecked: !this.state.isNewZealandCyclingChecked}); }
+            myNewZealandMuseumsCheckboxChanged = (event) => { this.setState({isNewZealandMuseumsChecked: !this.state.isNewZealandMuseumsChecked}); }
+            myNewZealandBoatingCheckboxChanged = (event) => { this.setState({isNewZealandBoatingChecked: !this.state.isNewZealandBoatingChecked}); }
+
+
+            //Venice Italy
+            myVeniceItalyCheckboxChanged = (event) => 
+            { 
+                this.setState({isVeniceItalyChecked: !this.state.isVeniceItalyChecked}); 
+
+                if (this.state.isVeniceItalyChecked)
+				{
+					document.getElementById("veniceItalyActivitiesDiv").style.display = "none";
+				}
+				else
+				{
+					document.getElementById ("veniceItalyActivitiesDiv").style.display = "block";
+				}
+            }
+
+            myVeniceItalyMuseumsCheckboxChanged = (event) => { this.setState({isVeniceItalyMuseumsChecked: !this.state.isVeniceItalyMuseumsChecked}); }
+            myVeniceItalyTheatreCheckboxChanged = (event) => { this.setState({isVeniceItalyTheatreChecked: !this.state.isVeniceItalyTheatreChecked}); }
+            myVeniceItalyParksCheckboxChanged = (event) => { this.setState({isVeniceItalyParksChecked: !this.state.isVeniceItalyParksChecked}); }
+            myVeniceItalyCityToursCheckboxChanged = (event) => { this.setState({isVeniceItalyCityToursChecked: !this.state.isVeniceItalyCityToursChecked}); }
+
+
+            //Customer Information
+            myFirstNameChanged = (event) => { this.setState({firstName: event.target.value}); }
+            myLastNameChanged = (event) => { this.setState({lastName: event.target.value}); }
+            myEmailAddressChanged = (event) => { this.setState({emailAddress:event.target.value}); }
+            myPhoneNumberChanged = (event) => { this.setState({phoneNumber:event.target.value}); }
+            myNumberofAdultsChanged = (event) => { this.setState({numAdults:event.target.value}); }
+            myNumberofChildrenChanged = (event) => { this.setState({numChildren:event.target.value}); }
+            myDateChanged = (event) => { this.setState({date:event.target.value}); }
+
+            render()
             {
-                return {checked: false}
-            },
-            handleCheck: function()
-            {
-                this.setState({checked: !this.state.checked});
-            },
-            render: function()
-            {
-                var msg;
+                return(
 
-                if (this.state.checked)
-                {
-                    return (
-                        <div>
-                            <p>Cancun</p>
-                            <p>Parks and Recreation<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            <p>Beaches<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            <p>Boating<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            <p>Snorkeling<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                        </div>    
-                    );
+                    
+                    <form onSubmit={this.mySubmitHandler}>
 
-                } else
-                {
-                msg = "Un-checked";
-                }
-                return (
+                    <p id='destinationAndActivities'>
 
-                <div>
-                    <p>Cancun</p>
-                    <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
-                </div>
+                        <h2>Select a Destination and Activities</h2>
+
+                            <div>
+                                <label><input type='checkbox' name='maldives' checked={this.state.isMaldivesChecked} onChange={this.myMaldivesCheckboxChanged} /><b>Maldives Resort</b></label>
+                            </div>
+                            <p>  
+                            <div id='maldivesActivitiesDiv' style={{display: 'none'}}> 
+                                <label>Please select your activities:   <input type='checkbox' name='maldivesMuseums' checked={this.state.isMaldivesMuseumsChecked} onChange={this.myMaldivesMuseumsCheckboxChanged} /> Museums  </label>
+                                <label><input type='checkbox' name='maldivesSailing' checked={this.state.isMaldivesSailingChecked} onChange={this.myMaldivesSailingCheckboxChanged} /> Sailing  </label>
+                                <label><input type='checkbox' name='maldivesBeach' checked={this.state.isMaldivesBeachChecked} onChange={this.myMaldivesBeachCheckboxChanged} /> Beach  </label>
+                                <label><input type='checkbox' name='maldivesHiking' checked={this.state.isMaldivesHikingChecked} onChange={this.myMaldivesHikingCheckboxChanged} /> Hiking  </label>
+                                <label><input type='checkbox' name='maldivesBoating' checked={this.state.isMaldivesBoatingChecked} onChange={this.myMaldivesBoatingCheckboxChanged} /> Boating  </label>
+                            </div>
+                            </p>  
+                            
+                            <div>
+                                <label><input type='checkbox' name='mexico' checked={this.state.isMexicoChecked} onChange={this.myMexicoCheckboxChanged} /><b>Mexico Resort</b></label>
+                            </div>
+                            <p>
+                            <div id='mexicoActivitiesDiv' style={{display: 'none'}}>
+                                <label>Please select your activities:   <input type='checkbox' name='mexicoParks' checked={this.state.isMexicoParksChecked} onChange={this.myMexicoParksCheckboxChanged} /> Parks and Recreation  </label>
+                                <label><input type='checkbox' name='mexicoBeaches' checked={this.state.isMexicoBeachesChecked} onChange={this.myMexicoBeachesCheckboxChanged} /> Beaches  </label>
+                                <label><input type='checkbox' name='mexicoBoating' checked={this.state.isMexicoBoatingChecked} onChange={this.myMexicoBoatingCheckboxChanged} /> Boating  </label>
+                                <label><input type='checkbox' name='mexicoSnorkeling' checked={this.state.isMexicoSnorkelingChecked} onChange={this.myMexicoSnorkelingCheckboxChanged} /> Snorkeling  </label>
+                            </div>
+                            </p>
+
+                            <div>
+                                <label><input type='checkbox' name='newZealand' checked={this.state.isNewZealandChecked} onChange={this.myNewZealandCheckboxChanged} /><b>New Zealand Trek</b></label>
+                            </div>
+                            <p>
+                            <div id='newZealandActivitiesDiv' style={{display: 'none'}}>
+                                <label>Please select your activities:   <input type='checkbox' name='newZealandCityTours' checked={this.state.isNewZealandCityToursChecked} onChange={this.myNewZealandCityToursCheckboxChanged} /> City Tours  </label>
+                                <label><input type='checkbox' name='newZealandSports' checked={this.state.isNewZealandSportsChecked} onChange={this.myNewZealandSportsCheckboxChanged} /> Sports  </label>
+                                <label><input type='checkbox' name='newZealandCycling' checked={this.state.isNewZealandCyclingChecked} onChange={this.myNewZealandCyclingCheckboxChanged} /> Cycling  </label>
+                                <label><input type='checkbox' name='newZealandMuseums' checked={this.state.isNewZealandMuseumsChecked} onChange={this.myNewZealandMuseumsCheckboxChanged} /> Museums  </label>
+                                <label><input type='checkbox' name='newZealandBoating' checked={this.state.isNewZealandBoatingChecked} onChange={this.myNewZealandBoatingCheckboxChanged} /> Boating  </label>
+                            </div>
+                            </p>
+
+                            <div>
+                                <label><input type='checkbox' name='veniceItaly' checked={this.state.isVeniceItalyChecked} onChange={this.myVeniceItalyCheckboxChanged} /><b>Venice Italy</b></label>
+                            </div>
+                            <p>
+                            <div id='veniceItalyActivitiesDiv' style={{display: 'none'}}>
+                                <label>Please select your activities: <input type='checkbox' name='veniceItalyMuseums' checked={this.state.isVeniceItalyMuseumsChecked} onChange={this.myVeniceItalyMuseumsCheckboxChanged} /> Museums  </label>
+                                <label><input type='checkbox' name='veniceItalyTheatre' checked={this.state.isVeniceItalyTheatreChecked} onChange={this.myVeniceItalyTheatreCheckboxChanged} /> Theatre  </label>
+                                <label><input type='checkbox' name='veniceItalyParks' checked={this.state.isVeniceItalyParksChecked} onChange={this.myVeniceItalyParksCheckboxChanged} /> Parks and Recreation  </label>
+                                <label><input type='checkbox' name='veniceItalyCityTours' checked={this.state.isVeniceItalyCityToursChecked} onChange={this.myVeniceItalyCityToursCheckboxChanged} /> City Tours  </label>
+                            </div>
+                            </p>
+                    </p>
+
+                    <p id='customerInformation'>
+                        <h2>Please Enter Customer Information</h2>
+
+                            <p><label>First Name: <input type='text'name='firstName'required onChange={this.myFirstNameChanged} /></label></p>
+                            <p><label>Last name: <input type='text'name='lastName' required onChange={this.myLastNameChanged} /></label></p>
+                            <p><label>Email Address: <input type='email' name='emailAddress' required onChange={this.myEmailAddressChanged} /></label></p>                           
+                            <p><label>Phone Number: <input type='tel' name='phoneNumber' placeholder="(###) ###-###" required onChange={this.myPhoneNumberChanged} /></label></p>                            
+                            <p><label>Number of Adults: <input type='number' name='numAdults' required onChange={this.myNumberofAdultsChanged} /></label></p>                          
+                            <p><label>Number of Children: <input type='number' name='numChildren' required onChange={this.myNumberofChildrenChanged} /></label></p>                          
+                            <p><label>Date of Trip: <input type='date' name='dateOfTrip' required onChange={this.myDateChanged} /></label></p>
+
+                            <p>
+                                <input type="reset" value="Clear"/>
+                                <input type="submit" value="Submit"/>
+                            </p>
+                    </p>
+
+                    </form>
                 );
             }
-            });
-            
-            React.render(<Checkbox />,
-            document.getElementById('react-container2')
-            );
-            </script>
+        }
 
-           <!-- New Zealand -->
+        ReactDOM.render(<MyForm />, document.getElementById('reactForm'));
 
-            <script type="text/babel">
-                var Checkbox = React.createClass({
-                getInitialState: function()
-                {
-                    return {checked: false}
-                },
-                handleCheck: function()
-                {
-                    this.setState({checked: !this.state.checked});
-                },
-                render: function()
-                {
-                    var msg;
+    </script>
 
-                    if (this.state.checked)
-                    {
-                        return (
-                            <div>
-                                <p>New Zealand</p>
-                                <p>City Tours<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                                <p>Sports<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                                <p>Cycling<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                                <p>Museums<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                                <p>Boating<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            </div>    
-                        );
-
-                    } else
-                    {
-                    msg = "Un-checked";
-                    }
-                    return (
-
-                    <div>
-                        <p>New Zealand</p>
-                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
-                    </div>
-                    );
-                }
-                });
-                
-                React.render(<Checkbox />,
-                document.getElementById('react-container3')
-                );
-            </script>
-
-            <!-- Italy -->
-
-            <script type="text/babel">
-                var Checkbox = React.createClass({
-                getInitialState: function()
-                {
-                    return {checked: false}
-                },
-                handleCheck: function()
-                {
-                    this.setState({checked: !this.state.checked});
-                },
-                render: function()
-                {
-                    var msg;
-
-                    if (this.state.checked)
-                    {
-                        return (
-                            <div>
-                                <p>Venice, Italy</p>
-                                <p>Museums<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                                <p>Theatre<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                                <p>Parks and Recreation<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                                <p>City Tours<input type="checkbox" defaultChecked={this.state.unchecked}/></p>
-                            </div>    
-                        );
-
-                    } else
-                    {
-                    msg = "Un-checked";
-                    }
-                    return (
-
-                    <div>
-                        <p>Venice, Italy</p>
-                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
-                    </div>
-                    );
-                }
-                });
-                
-                React.render(<Checkbox />,
-                document.getElementById('react-container4')
-                );
-            </script>
-
-
-    </body>
 </html>
