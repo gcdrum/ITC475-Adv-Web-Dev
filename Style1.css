@@ -36,6 +36,13 @@ body {
   display: none;
 }
 
+
+#contact {
+  border-style: double;
+  border-width: 5px;
+}
+
+
 .root {
   float: right;
   font-size: 12px;
@@ -111,6 +118,13 @@ article {
   padding-bottom: 20px;
 }
 
+confirm {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: #000000;
+  border-width: 2em;
+}
+
 #destination01 img {
   display: block;
   height: 300px;
@@ -175,17 +189,6 @@ footer {
   padding-bottom: 5px;
 }
 
-#Forms {
-  margin-right: 10px;
-  width: 500px;
-  padding: 15px;
-  border-style: solid;
-  display: block;
-  margin-bottom: 10px;
-  background-color: #add8e6;
-}
-
-
 @media (max-width: 800px){
   .subHead {
     padding-top: 20px;
@@ -216,19 +219,6 @@ footer {
     width: 100%;
   }
 
-  #form {
-    color: pink;
-  }
-
-
-  #form {
-    display: block;
-    height: 300px;
-    width: 100%;
-  }
-
-
-
 }
 
 
@@ -258,10 +248,5 @@ footer {
     padding: 11px;
 
   }
-
- 
-
-
-
 
 }

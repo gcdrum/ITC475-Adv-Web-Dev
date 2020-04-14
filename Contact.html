@@ -45,12 +45,8 @@
 
             </div>
 
-        
-
             <!--Call to React component-->
-            <div class="col-1-2" id="Forms">
-                <div id='reactForm'></div>
-            </div>
+            <div id='reactForm'></div>
             
         </article>
         
@@ -63,7 +59,7 @@
         </footer>
     </body>
 
-   
+
     <!--JS React Form with activities selector-->
     <script type="text/babel">
 
@@ -205,60 +201,59 @@
             {
                 return(
 
-                    
-                    <form onSubmit={this.mySubmitHandler}>
+                    <form action="confirm.php" method="POST" onSubmit={this.mySubmitHandler}>
 
                     <p id='destinationAndActivities'>
 
                         <h2>Select a Destination and Activities</h2>
 
                             <div>
-                                <label><input type='checkbox' name='maldives' checked={this.state.isMaldivesChecked} onChange={this.myMaldivesCheckboxChanged} /><b>Maldives Resort</b></label>
+                                <label><input type='checkbox' name='destinationSelection[]' value='Maldives' checked={this.state.isMaldivesChecked} onChange={this.myMaldivesCheckboxChanged} /><b>Maldives Resort</b></label>
                             </div>
                             <p>  
                             <div id='maldivesActivitiesDiv' style={{display: 'none'}}> 
-                                <label>Please select your activities:   <input type='checkbox' name='maldivesMuseums' checked={this.state.isMaldivesMuseumsChecked} onChange={this.myMaldivesMuseumsCheckboxChanged} /> Museums  </label>
-                                <label><input type='checkbox' name='maldivesSailing' checked={this.state.isMaldivesSailingChecked} onChange={this.myMaldivesSailingCheckboxChanged} /> Sailing  </label>
-                                <label><input type='checkbox' name='maldivesBeach' checked={this.state.isMaldivesBeachChecked} onChange={this.myMaldivesBeachCheckboxChanged} /> Beach  </label>
-                                <label><input type='checkbox' name='maldivesHiking' checked={this.state.isMaldivesHikingChecked} onChange={this.myMaldivesHikingCheckboxChanged} /> Hiking  </label>
-                                <label><input type='checkbox' name='maldivesBoating' checked={this.state.isMaldivesBoatingChecked} onChange={this.myMaldivesBoatingCheckboxChanged} /> Boating  </label>
+                                <label>Please select your activities:   <input type='checkbox' name='activitiesSelection[]' value='Museums ' checked={this.state.isMaldivesMuseumsChecked} onChange={this.myMaldivesMuseumsCheckboxChanged} /> Museums  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value="Sailing " checked={this.state.isMaldivesSailingChecked} onChange={this.myMaldivesSailingCheckboxChanged} /> Sailing  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value="Beach " checked={this.state.isMaldivesBeachChecked} onChange={this.myMaldivesBeachCheckboxChanged} /> Beach  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value="Hiking " checked={this.state.isMaldivesHikingChecked} onChange={this.myMaldivesHikingCheckboxChanged} /> Hiking  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value="Boating " checked={this.state.isMaldivesBoatingChecked} onChange={this.myMaldivesBoatingCheckboxChanged} /> Boating  </label>
                             </div>
                             </p>  
                             
                             <div>
-                                <label><input type='checkbox' name='mexico' checked={this.state.isMexicoChecked} onChange={this.myMexicoCheckboxChanged} /><b>Mexico Resort</b></label>
+                                <label><input type='checkbox' name='destinationSelection[]' value='Mexico' checked={this.state.isMexicoChecked} onChange={this.myMexicoCheckboxChanged} /><b>Mexico Resort</b></label>
                             </div>
                             <p>
                             <div id='mexicoActivitiesDiv' style={{display: 'none'}}>
-                                <label>Please select your activities:   <input type='checkbox' name='mexicoParks' checked={this.state.isMexicoParksChecked} onChange={this.myMexicoParksCheckboxChanged} /> Parks and Recreation  </label>
-                                <label><input type='checkbox' name='mexicoBeaches' checked={this.state.isMexicoBeachesChecked} onChange={this.myMexicoBeachesCheckboxChanged} /> Beaches  </label>
-                                <label><input type='checkbox' name='mexicoBoating' checked={this.state.isMexicoBoatingChecked} onChange={this.myMexicoBoatingCheckboxChanged} /> Boating  </label>
-                                <label><input type='checkbox' name='mexicoSnorkeling' checked={this.state.isMexicoSnorkelingChecked} onChange={this.myMexicoSnorkelingCheckboxChanged} /> Snorkeling  </label>
+                                <label>Please select your activities:   <input type='checkbox' name='activitiesSelection[]' value='Parks ' checked={this.state.isMexicoParksChecked} onChange={this.myMexicoParksCheckboxChanged} /> Parks and Recreation  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Beaches ' checked={this.state.isMexicoBeachesChecked} onChange={this.myMexicoBeachesCheckboxChanged} /> Beaches  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Boating ' checked={this.state.isMexicoBoatingChecked} onChange={this.myMexicoBoatingCheckboxChanged} /> Boating  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Snorkeling ' checked={this.state.isMexicoSnorkelingChecked} onChange={this.myMexicoSnorkelingCheckboxChanged} /> Snorkeling  </label>
                             </div>
                             </p>
 
                             <div>
-                                <label><input type='checkbox' name='newZealand' checked={this.state.isNewZealandChecked} onChange={this.myNewZealandCheckboxChanged} /><b>New Zealand Trek</b></label>
+                                <label><input type='checkbox' name='destinationSelection[]' value='New Zealand' checked={this.state.isNewZealandChecked} onChange={this.myNewZealandCheckboxChanged} /><b>New Zealand Trek</b></label>
                             </div>
                             <p>
                             <div id='newZealandActivitiesDiv' style={{display: 'none'}}>
-                                <label>Please select your activities:   <input type='checkbox' name='newZealandCityTours' checked={this.state.isNewZealandCityToursChecked} onChange={this.myNewZealandCityToursCheckboxChanged} /> City Tours  </label>
-                                <label><input type='checkbox' name='newZealandSports' checked={this.state.isNewZealandSportsChecked} onChange={this.myNewZealandSportsCheckboxChanged} /> Sports  </label>
-                                <label><input type='checkbox' name='newZealandCycling' checked={this.state.isNewZealandCyclingChecked} onChange={this.myNewZealandCyclingCheckboxChanged} /> Cycling  </label>
-                                <label><input type='checkbox' name='newZealandMuseums' checked={this.state.isNewZealandMuseumsChecked} onChange={this.myNewZealandMuseumsCheckboxChanged} /> Museums  </label>
-                                <label><input type='checkbox' name='newZealandBoating' checked={this.state.isNewZealandBoatingChecked} onChange={this.myNewZealandBoatingCheckboxChanged} /> Boating  </label>
+                                <label>Please select your activities:   <input type='checkbox' name='CityTours' checked={this.state.isNewZealandCityToursChecked} onChange={this.myNewZealandCityToursCheckboxChanged} /> City Tours  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Sports ' checked={this.state.isNewZealandSportsChecked} onChange={this.myNewZealandSportsCheckboxChanged} /> Sports  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Cycling ' checked={this.state.isNewZealandCyclingChecked} onChange={this.myNewZealandCyclingCheckboxChanged} /> Cycling  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Museums ' checked={this.state.isNewZealandMuseumsChecked} onChange={this.myNewZealandMuseumsCheckboxChanged} /> Museums  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Boating ' checked={this.state.isNewZealandBoatingChecked} onChange={this.myNewZealandBoatingCheckboxChanged} /> Boating  </label>
                             </div>
                             </p>
 
                             <div>
-                                <label><input type='checkbox' name='veniceItaly' checked={this.state.isVeniceItalyChecked} onChange={this.myVeniceItalyCheckboxChanged} /><b>Venice Italy</b></label>
+                                <label><input type='checkbox' name='destinationSelection[]' value='Venice Italy' checked={this.state.isVeniceItalyChecked} onChange={this.myVeniceItalyCheckboxChanged} /><b>Venice Italy</b></label>
                             </div>
                             <p>
                             <div id='veniceItalyActivitiesDiv' style={{display: 'none'}}>
-                                <label>Please select your activities: <input type='checkbox' name='veniceItalyMuseums' checked={this.state.isVeniceItalyMuseumsChecked} onChange={this.myVeniceItalyMuseumsCheckboxChanged} /> Museums  </label>
-                                <label><input type='checkbox' name='veniceItalyTheatre' checked={this.state.isVeniceItalyTheatreChecked} onChange={this.myVeniceItalyTheatreCheckboxChanged} /> Theatre  </label>
-                                <label><input type='checkbox' name='veniceItalyParks' checked={this.state.isVeniceItalyParksChecked} onChange={this.myVeniceItalyParksCheckboxChanged} /> Parks and Recreation  </label>
-                                <label><input type='checkbox' name='veniceItalyCityTours' checked={this.state.isVeniceItalyCityToursChecked} onChange={this.myVeniceItalyCityToursCheckboxChanged} /> City Tours  </label>
+                                <label>Please select your activities: <input type='checkbox' name='activitiesSelection[]' value='Italy Museums' checked={this.state.isVeniceItalyMuseumsChecked} onChange={this.myVeniceItalyMuseumsCheckboxChanged} /> Museums  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Theatre ' checked={this.state.isVeniceItalyTheatreChecked} onChange={this.myVeniceItalyTheatreCheckboxChanged} /> Theatre  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='Parks ' checked={this.state.isVeniceItalyParksChecked} onChange={this.myVeniceItalyParksCheckboxChanged} /> Parks and Recreation  </label>
+                                <label><input type='checkbox' name='activitiesSelection[]' value='City Tours ' checked={this.state.isVeniceItalyCityToursChecked} onChange={this.myVeniceItalyCityToursCheckboxChanged} /> City Tours  </label>
                             </div>
                             </p>
                     </p>
@@ -288,7 +283,5 @@
         ReactDOM.render(<MyForm />, document.getElementById('reactForm'));
 
     </script>
-
-   
 
 </html>
